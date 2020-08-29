@@ -25,5 +25,7 @@ jobs:
           author_name: kohrongying
           author_email: kohrongying@gmail.com
           message: 'Build files'
+          add: 'docs'
+          force: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
