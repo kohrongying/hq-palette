@@ -20,7 +20,6 @@ export class HaikyuuPalette extends LitElement {
   _copyToClipboard(color: string) {
     navigator.clipboard.writeText(color).then(function() {
       console.log('Async: Copying to clipboard was successful!');
-      alert('copied to clipboard')
     }, function(err) {
       console.error('Async: Could not copy text: ', err);
     });
