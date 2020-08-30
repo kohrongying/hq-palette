@@ -26,6 +26,14 @@ export class HaikyuuPalette extends LitElement {
     this.colors = colors;
   }
 
+  _copyToClipboard(color: string) {
+    navigator.clipboard.writeText(color).then(function() {
+      console.log('Async: Copying to clipboard was successful!');
+    }, function(err) {
+      console.error('Async: Could not copy text: ', err);
+    });
+  }
+
   static styles = css`
     :host {
       min-height: 100vh;
@@ -78,11 +86,21 @@ export class HaikyuuPalette extends LitElement {
     .palette > div {
       flex: 1;
       height: 150px;
+      position: relative;
     }
 
     .palette > div:hover {
       flex: 2;
       transition: all 0.5s;
+    }
+
+    .hex-code {
+      font-size: 10px;
+      background-color: rgba(255,255,255,0.5);
+      position: absolute;
+      top: 0;
+      padding: 2px;
+      left: 0;
     }
 
     button {
@@ -109,7 +127,14 @@ export class HaikyuuPalette extends LitElement {
               item => html` <div class="palette-container">
                 <div class="palette">
                   ${item.colors.map(
-                    color => html` <div style="background: ${color}"></div>`
+                    color => html`
+                      <div
+                        style="background: ${color}"
+                        @click=${() => this._copyToClipboard(color)}
+                      >
+                        <span class="hex-code">${color}</span>
+                      </div>
+                    `
                   )}
                 </div>
 
