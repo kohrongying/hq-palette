@@ -1,5 +1,5 @@
 import { LitElement, html, css, property } from 'lit-element';
-import { content3Columns } from "../constants/styles.js";
+import { content3Columns, sectionPadding } from "../constants/styles.js";
 
 class Cards extends LitElement {
 
@@ -8,11 +8,8 @@ class Cards extends LitElement {
 
   static styles = [
     content3Columns,
+    sectionPadding,
     css`
-    section#cards {
-      padding: 60px 20px;
-    }
-
     .card {
       border-radius: 10px;
       padding: 20px;

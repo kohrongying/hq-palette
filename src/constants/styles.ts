@@ -27,3 +27,9 @@ button:hover {
 button.outlined {
   background-color: transparent;
 }`
+
+export const sectionPadding = css`
+section {
+  padding: 60px 20px;
+}
+`

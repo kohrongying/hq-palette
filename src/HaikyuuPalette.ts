@@ -5,12 +5,6 @@ import './components/cards.js';
 import './components/features.js';
 import { content3Columns, button } from "./constants/styles.js"
 
-const footerTemplate = html`
-  <footer>
-    created by ry
-  </footer>
-`;
-
 export class HaikyuuPalette extends LitElement {
   constructor() {
     super();
@@ -36,12 +30,7 @@ export class HaikyuuPalette extends LitElement {
     content3Columns,
     button,
     css`
-    :host {
-      min-height: 100vh;
-      margin: 0 auto;
-    }
-
-    section#hero {
+    section.hero {
       background-color: black;
       color: white;
       padding: 60px 20px;
@@ -65,25 +54,32 @@ export class HaikyuuPalette extends LitElement {
       padding: 40px 20px;
     }
 
-    .palette {
-      display: flex;
-      padding-bottom: 10px;
-    }
     .palette-container {
       padding: 10px;
       background-color: white;
       border-radius: 8px;
     }
 
-    .palette > div {
+    .palette {
+      display: flex;
+      padding-bottom: 10px;
+    }
+
+    .palette-color {
       flex: 1;
       height: 200px;
       position: relative;
     }
 
-    .palette > div:hover {
+    .palette-color:hover {
       flex: 2;
       transition: all 0.5s;
+    }
+
+    .palette-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .hex-code {
@@ -99,7 +95,7 @@ export class HaikyuuPalette extends LitElement {
   render() {
     return html`
       <main>
-        <section id="hero">
+        <section class="hero">
           <div class="content-max">
             <h1>Hq color palette 🏐</h1>
             <p>A tribute piece. Click on color to copy hex code.</p>
@@ -114,6 +110,7 @@ export class HaikyuuPalette extends LitElement {
                   ${item.colors.map(
                     color => html`
                       <div
+                        class="palette-color"
                         style="background: ${color}"
                         @click=${() => this._copyToClipboard(color)}
                       >
@@ -123,9 +120,7 @@ export class HaikyuuPalette extends LitElement {
                   )}
                 </div>
 
-                <div
-                  style="display: flex; justify-content: space-between; align-items: center;"
-                >
+                <div class="palette-info">
                   <button @click=${() => this._setColors(item.colors)}>
                     Test
                   </button>
@@ -136,7 +131,7 @@ export class HaikyuuPalette extends LitElement {
           </div>
         </section>
 
-        <section id="hero" style="background: linear-gradient(to right, ${this.colors[0]}, ${this.colors[0]}11);">
+        <section class="hero" style="background: linear-gradient(to right, ${this.colors[0]}, ${this.colors[0]}11);">
           <div class="content-max">
             <h1>Applying the palette</h1>
             <p>Six who are strong are stronger together</p>

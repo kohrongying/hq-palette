@@ -2,7 +2,7 @@ import { LitElement, html, css, property } from 'lit-element';
 import { image } from '../svg/image.js';
 import { image2 } from '../svg/image-2.js';
 import { image3 } from '../svg/image-3.js';
-import { content3Columns } from "../constants/styles.js";
+import { content3Columns, sectionPadding } from "../constants/styles.js";
 
 class Features extends LitElement {
   constructor() {
@@ -20,11 +20,7 @@ class Features extends LitElement {
 
   static styles = [
     content3Columns,
-    css`
-    section#features {
-      padding: 60px 20px;
-    }
-  `
+    sectionPadding,
   ]
 
   render() {
