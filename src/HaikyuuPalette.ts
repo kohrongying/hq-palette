@@ -3,24 +3,21 @@ import { palette } from './constants/palette.js';
 import './components/cta.js';
 import './components/cards.js';
 import './components/features.js';
+import { content3Columns, button } from "./constants/styles.js"
 
 const footerTemplate = html`
   <footer>
-    Created by RY
+    created by ry
   </footer>
 `;
 
 export class HaikyuuPalette extends LitElement {
   constructor() {
     super();
-    this.colors = ['#3B3C4D', '#FF891C', '#E6F259', '#B4B4B4'];
+    this.colors = palette[0].colors;
   }
 
-  @property({ type: String }) page = 'main';
-
   @property({ type: Array }) colors = [''];
-
-  @property({ type: String }) title = '';
 
   _setColors(colors: Array<string>) {
     this.colors = colors;
@@ -29,12 +26,16 @@ export class HaikyuuPalette extends LitElement {
   _copyToClipboard(color: string) {
     navigator.clipboard.writeText(color).then(function() {
       console.log('Async: Copying to clipboard was successful!');
+      alert('copied to clipboard')
     }, function(err) {
       console.error('Async: Could not copy text: ', err);
     });
   }
 
-  static styles = css`
+  static styles = [
+    content3Columns,
+    button,
+    css`
     :host {
       min-height: 100vh;
       margin: 0 auto;
@@ -43,21 +44,12 @@ export class HaikyuuPalette extends LitElement {
     section#hero {
       background-color: black;
       color: white;
-      padding: 20px;
+      padding: 60px 20px;
     }
 
     .content-max {
       max-width: 960px;
       margin: 0 auto;
-    }
-
-    .content {
-      max-width: 960px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 20px;
-      text-align: center;
     }
 
     footer {
@@ -75,17 +67,17 @@ export class HaikyuuPalette extends LitElement {
 
     .palette {
       display: flex;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
     }
     .palette-container {
-      padding: 20px;
+      padding: 10px;
       background-color: white;
-      border-radius: 10px;
+      border-radius: 8px;
     }
 
     .palette > div {
       flex: 1;
-      height: 150px;
+      height: 200px;
       position: relative;
     }
 
@@ -102,22 +94,15 @@ export class HaikyuuPalette extends LitElement {
       padding: 2px;
       left: 0;
     }
-
-    button {
-      padding: 10px 20px;
-      color: white;
-      border: none;
-      background-color: black;
-    }
-  `;
+  `];
 
   render() {
     return html`
       <main>
         <section id="hero">
           <div class="content-max">
-            <h1>Hq color palette</h1>
-            <p>A tribute piece</p>
+            <h1>Hq color palette 🏐</h1>
+            <p>A tribute piece. Click on color to copy hex code.</p>
           </div>
         </section>
 
@@ -151,22 +136,25 @@ export class HaikyuuPalette extends LitElement {
           </div>
         </section>
 
-        <section id="hero">
+        <section id="hero" style="background: linear-gradient(to right, ${this.colors[0]}, ${this.colors[0]}11);">
           <div class="content-max">
-            <h1>Consequat est velit esse cupidatat</h1>
-            <button style="background-color: ${this.colors[2]}">
+            <h1>Applying the palette</h1>
+            <p>Six who are strong are stronger together</p>
+            <button class="outlined" style="border: 2px solid ${this.colors[3]}; color: ${this.colors[3]};">
               Learn more
             </button>
           </div>
         </section>
 
-        <features-component color=${this.colors[0]}></features-component>
+        <features-component color=${this.colors[1]}></features-component>
 
-        <cards-component bgColor=${this.colors[3]} color=${this.colors[1]}></cards-component>
+        <cards-component bgColor=${this.colors[2]} color=${this.colors[1]}></cards-component>
 
-        <cta-component color=${this.colors[1]}></cta-component>
+        <cta-component color=${this.colors[3]}></cta-component>
 
-        ${footerTemplate}
+        <footer style="background-color: ${this.colors[0]}">
+          created by ry
+        </footer>
       </main>
     `;
   }
