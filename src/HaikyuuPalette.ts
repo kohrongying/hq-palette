@@ -37,7 +37,6 @@ export class HaikyuuPalette extends LitElement {
   static styles = css`
     :host {
       min-height: 100vh;
-      max-width: 960px;
       margin: 0 auto;
     }
 
@@ -83,6 +82,7 @@ export class HaikyuuPalette extends LitElement {
       background-color: white;
       border-radius: 10px;
     }
+
     .palette > div {
       flex: 1;
       height: 150px;
@@ -162,7 +162,7 @@ export class HaikyuuPalette extends LitElement {
 
         <features-component color=${this.colors[0]}></features-component>
 
-        <cards-component color=${this.colors[1]}></cards-component>
+        <cards-component bgColor=${this.colors[3]} color=${this.colors[1]}></cards-component>
 
         <cta-component color=${this.colors[1]}></cta-component>
 
