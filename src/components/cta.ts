@@ -1,5 +1,5 @@
 import { LitElement, html, css, property } from 'lit-element';
-import { button } from "../constants/styles.js";
+import { button, sectionPadding } from "../constants/styles.js";
 
 class CTA extends LitElement {
   constructor() {
@@ -16,9 +16,9 @@ class CTA extends LitElement {
 
   static styles = [
     button,
+    sectionPadding,
     css`
     section#cta {
-      padding: 60px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -29,7 +29,7 @@ class CTA extends LitElement {
   render() {
     return html`
       <section id="cta">
-        <h3>Sit culpa eu cupidatat ullamco elit eu ipsum irure</h3>
+        <h1>Sit culpa eu cupidatat ullamco elit eu ipsum irure</h1>
         <button style="background-color: ${this.color}">Get it now</button>
       </section>
     `;
