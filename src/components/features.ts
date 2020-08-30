@@ -22,7 +22,7 @@ class Features extends LitElement {
     content3Columns,
     css`
     section#features {
-      padding: 20px;
+      padding: 60px 20px;
     }
   `
   ]

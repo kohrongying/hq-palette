@@ -14,7 +14,6 @@ class Cards extends LitElement {
     }
 
     .card {
-      background-color: #52283b;
       border-radius: 10px;
       padding: 20px;
       color: white;

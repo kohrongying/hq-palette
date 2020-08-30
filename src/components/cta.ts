@@ -1,4 +1,5 @@
 import { LitElement, html, css, property } from 'lit-element';
+import { button } from "../constants/styles.js";
 
 class CTA extends LitElement {
   constructor() {
@@ -13,7 +14,9 @@ class CTA extends LitElement {
     };
   }
 
-  static styles = css`
+  static styles = [
+    button,
+    css`
     section#cta {
       padding: 60px 20px;
       display: flex;
@@ -21,13 +24,7 @@ class CTA extends LitElement {
       align-items: center;
       justify-content: center;
     }
-
-    button {
-      padding: 10px 20px;
-      color: white;
-      border: none;
-    }
-  `;
+  `];
 
   render() {
     return html`
