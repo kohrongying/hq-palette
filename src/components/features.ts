@@ -2,6 +2,7 @@ import { LitElement, html, css, property } from 'lit-element';
 import { image } from '../svg/image.js';
 import { image2 } from '../svg/image-2.js';
 import { image3 } from '../svg/image-3.js';
+import { content3Columns } from "../constants/styles.js";
 
 class Features extends LitElement {
   constructor() {
@@ -15,21 +16,16 @@ class Features extends LitElement {
       color: { type: String },
     };
   }
+  
 
-  static styles = css`
-    .content {
-      max-width: 960px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 20px;
-      text-align: center;
-    }
-
+  static styles = [
+    content3Columns,
+    css`
     section#features {
       padding: 20px;
     }
-  `;
+  `
+  ]
 
   render() {
     return html`

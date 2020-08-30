@@ -1,31 +1,16 @@
 import { LitElement, html, css, property } from 'lit-element';
+import { content3Columns } from "../constants/styles.js";
 
 class Cards extends LitElement {
-  constructor() {
-    super();
-    this.color = '#FF891C';
-  }
 
-  @property({ type: String }) color = '';
-  static get properties() {
-    return {
-      color: { type: String },
-    };
-  }
+  @property({ type: String }) color = '#FF891C';
+  @property({ type: String }) bgColor = 'lightgrey';
 
-  static styles = css`
+  static styles = [
+    content3Columns,
+    css`
     section#cards {
       padding: 60px 20px;
-      background-color: lightgrey;
-    }
-
-    .content {
-      max-width: 960px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 20px;
-      text-align: center;
     }
 
     .card {
@@ -34,11 +19,11 @@ class Cards extends LitElement {
       padding: 20px;
       color: white;
     }
-  `;
+  `]
 
   render() {
     return html`
-      <section id="cards">
+      <section id="cards" style="background-color: ${this.bgColor}">
         <div class="content">
           ${new Array(3).fill(0).map(
             () => html`
