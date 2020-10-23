@@ -147,7 +147,9 @@ export class HaikyuuPalette extends LitElement {
         <cta-component color=${this.colors[3]}></cta-component>
 
         <footer style="background-color: ${this.colors[0]}">
+          <a href="https://rongying.co" style="color: white">
           created by ry
+          </a>
         </footer>
       </main>
     `;
